@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module connect_postgre</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">connect_postgre</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cisabe%5Cdownloads%5Ccodigo%5Cconnect_postgre.py">c:\users\isabe\downloads\codigo\connect_postgre.py</a></td></tr></table>
+    <p><span class="code">IMPORTADOR&nbsp;DE&nbsp;DADOS&nbsp;PARA&nbsp;POSTGRESQL<br>
+========================================================================<br>
+Esta&nbsp;classe&nbsp;fornece&nbsp;funcionalidades&nbsp;para&nbsp;importar&nbsp;dados&nbsp;de&nbsp;arquivos&nbsp;CSV<br>
+para&nbsp;um&nbsp;banco&nbsp;de&nbsp;dados&nbsp;PostgreSQL,&nbsp;incluindo&nbsp;criação&nbsp;automática&nbsp;de&nbsp;<br>
+banco&nbsp;de&nbsp;dados,&nbsp;tabelas&nbsp;e&nbsp;mapeamento&nbsp;de&nbsp;tipos&nbsp;de&nbsp;dados.<br>
+&nbsp;<br>
+Funcionalidades:<br>
+1.&nbsp;Conexão&nbsp;com&nbsp;PostgreSQL<br>
+2.&nbsp;Criação&nbsp;automática&nbsp;de&nbsp;banco&nbsp;de&nbsp;dados<br>
+3.&nbsp;Mapeamento&nbsp;de&nbsp;tipos&nbsp;pandas&nbsp;-&gt;&nbsp;PostgreSQL<br>
+4.&nbsp;Criação&nbsp;de&nbsp;tabelas&nbsp;baseadas&nbsp;em&nbsp;schema&nbsp;específico<br>
+5.&nbsp;Importação&nbsp;de&nbsp;dados&nbsp;CSV&nbsp;com&nbsp;pré-processamento<br>
+6.&nbsp;Operação&nbsp;automática&nbsp;completa</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="os.html">os</a><br>
+</td><td class="multicolumn"><a href="pandas.html">pandas</a><br>
+</td><td class="multicolumn"><a href="psycopg2.html">psycopg2</a><br>
+</td><td class="multicolumn"><a href="psycopg2.sql.html">psycopg2.sql</a><br>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="connect_postgre.html#PostgreSQLImporter">PostgreSQLImporter</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="PostgreSQLImporter">class <strong>PostgreSQLImporter</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#PostgreSQLImporter">PostgreSQLImporter</a>(host='localhost',&nbsp;user='postgres',&nbsp;password=None,&nbsp;port=5432)<br>
+&nbsp;<br>
+Classe&nbsp;principal&nbsp;para&nbsp;importação&nbsp;de&nbsp;dados&nbsp;CSV&nbsp;para&nbsp;PostgreSQL.<br>
+&nbsp;<br>
+Esta&nbsp;classe&nbsp;gerencia&nbsp;toda&nbsp;a&nbsp;operação&nbsp;de&nbsp;importação,&nbsp;desde&nbsp;a&nbsp;conexão<br>
+com&nbsp;o&nbsp;banco&nbsp;até&nbsp;a&nbsp;inserção&nbsp;dos&nbsp;dados&nbsp;com&nbsp;tipos&nbsp;mapeados&nbsp;corretamente.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="PostgreSQLImporter-__init__"><strong>__init__</strong></a>(self, host='localhost', user='postgres', password=None, port=5432)</dt><dd><span class="code">Inicializa&nbsp;o&nbsp;importador&nbsp;com&nbsp;parâmetros&nbsp;de&nbsp;conexão&nbsp;ao&nbsp;PostgreSQL.</span></dd></dl>
+
+<dl><dt><a name="PostgreSQLImporter-create_connection"><strong>create_connection</strong></a>(self, database='postgres')</dt><dd><span class="code">Estabelece&nbsp;conexão&nbsp;com&nbsp;o&nbsp;banco&nbsp;de&nbsp;dados&nbsp;PostgreSQL.</span></dd></dl>
+
+<dl><dt><a name="PostgreSQLImporter-create_database"><strong>create_database</strong></a>(self, db_name)</dt><dd><span class="code">Cria&nbsp;um&nbsp;novo&nbsp;banco&nbsp;de&nbsp;dados&nbsp;se&nbsp;ele&nbsp;não&nbsp;existir.<br>
+&nbsp;<br>
+Para&nbsp;criar&nbsp;um&nbsp;banco&nbsp;de&nbsp;dados,&nbsp;é&nbsp;necessário&nbsp;conectar&nbsp;ao&nbsp;banco,<br>
+pois&nbsp;não&nbsp;é&nbsp;possível&nbsp;criar&nbsp;banco&nbsp;dentro&nbsp;de&nbsp;si&nbsp;mesmo.</span></dd></dl>
+
+<dl><dt><a name="PostgreSQLImporter-create_table_from_csv"><strong>create_table_from_csv</strong></a>(self, csv_path, table_name, db_name, delimiter=',', encoding='utf-8')</dt><dd><span class="code">Cria&nbsp;tabela&nbsp;e&nbsp;importa&nbsp;dados&nbsp;de&nbsp;um&nbsp;arquivo&nbsp;CSV.<br>
+&nbsp;<br>
+Esta&nbsp;é&nbsp;a&nbsp;função&nbsp;principal&nbsp;que&nbsp;lê&nbsp;o&nbsp;CSV,&nbsp;cria&nbsp;a&nbsp;tabela&nbsp;com&nbsp;schema<br>
+apropriado&nbsp;e&nbsp;insere&nbsp;todos&nbsp;os&nbsp;dados&nbsp;no&nbsp;banco.</span></dd></dl>
+
+<dl><dt><a name="PostgreSQLImporter-get_column_type_for_your_table"><strong>get_column_type_for_your_table</strong></a>(self, column_name, dtype)</dt><dd><span class="code">Mapeia&nbsp;tipos&nbsp;específicos&nbsp;para&nbsp;colunas&nbsp;baseado&nbsp;em&nbsp;schema&nbsp;personalizado.<br>
+&nbsp;<br>
+Este&nbsp;método&nbsp;implementa&nbsp;o&nbsp;mapeamento&nbsp;específico&nbsp;para&nbsp;as&nbsp;colunas<br>
+do&nbsp;dataset&nbsp;IDA&nbsp;da&nbsp;Anatel.&nbsp;Se&nbsp;a&nbsp;coluna&nbsp;não&nbsp;estiver&nbsp;no&nbsp;mapeamento<br>
+específico,&nbsp;usa&nbsp;o&nbsp;mapeamento&nbsp;genérico.</span></dd></dl>
+
+<dl><dt><a name="PostgreSQLImporter-import_csv_automatic"><strong>import_csv_automatic</strong></a>(self, csv_path, db_name, table_name=None, delimiter=',', encoding='utf-8')</dt><dd><span class="code">Método&nbsp;automático&nbsp;completo&nbsp;para&nbsp;importação&nbsp;de&nbsp;CSV.<br>
+&nbsp;<br>
+Orquestra&nbsp;todo&nbsp;o&nbsp;processo:<br>
+1.&nbsp;Determina&nbsp;nome&nbsp;da&nbsp;tabela<br>
+2.&nbsp;Cria&nbsp;banco&nbsp;de&nbsp;dados<br>
+3.&nbsp;Cria&nbsp;tabela&nbsp;e&nbsp;importa&nbsp;dados</span></dd></dl>
+
+<dl><dt><a name="PostgreSQLImporter-preprocess_dataframe"><strong>preprocess_dataframe</strong></a>(self, df)</dt><dd><span class="code">Pré-processa&nbsp;o&nbsp;DataFrame&nbsp;antes&nbsp;da&nbsp;importação&nbsp;para&nbsp;o&nbsp;banco&nbsp;de&nbsp;dados.<br>
+&nbsp;<br>
+Aplica&nbsp;transformações&nbsp;básicas&nbsp;para&nbsp;garantir&nbsp;compatibilidade<br>
+entre&nbsp;os&nbsp;dados&nbsp;do&nbsp;CSV&nbsp;e&nbsp;o&nbsp;esquema&nbsp;do&nbsp;banco&nbsp;de&nbsp;dados.</span></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="PostgreSQLImporter-pandas_to_sql_type"><strong>pandas_to_sql_type</strong></a>(dtype)</dt><dd><span class="code">Mapeia&nbsp;tipos&nbsp;de&nbsp;dados&nbsp;do&nbsp;pandas&nbsp;para&nbsp;tipos&nbsp;SQL&nbsp;genéricos.<br>
+&nbsp;<br>
+Este&nbsp;método&nbsp;estático&nbsp;fornece&nbsp;mapeamento&nbsp;padrão&nbsp;para&nbsp;quando&nbsp;não&nbsp;há<br>
+um&nbsp;mapeamento&nbsp;específico&nbsp;definido&nbsp;para&nbsp;a&nbsp;coluna.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-main"><strong>main</strong></a>()</dt><dd><span class="code">Função&nbsp;principal&nbsp;que&nbsp;demonstra&nbsp;o&nbsp;uso&nbsp;da&nbsp;classe&nbsp;<a href="#PostgreSQLImporter">PostgreSQLImporter</a>.<br>
+&nbsp;<br>
+Esta&nbsp;função:<br>
+1.&nbsp;Carrega&nbsp;configurações&nbsp;de&nbsp;variáveis&nbsp;de&nbsp;ambiente<br>
+2.&nbsp;Cria&nbsp;instância&nbsp;do&nbsp;importador<br>
+3.&nbsp;Testa&nbsp;conexão<br>
+4.&nbsp;Executa&nbsp;importação&nbsp;automática</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>ISOLATION_LEVEL_AUTOCOMMIT</strong> = 0</td></tr></table>
+</body></html>

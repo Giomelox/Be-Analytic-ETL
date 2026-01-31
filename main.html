@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module main</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">main</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cisabe%5Cdownloads%5Ccodigo%5Cmain.py">c:\users\isabe\downloads\codigo\main.py</a></td></tr></table>
+    <p><span class="code">COLETOR&nbsp;DE&nbsp;DADOS&nbsp;DO&nbsp;ÍNDICE&nbsp;DE&nbsp;DESEMPENHO&nbsp;NO&nbsp;ATENDIMENTO&nbsp;(IDA)&nbsp;-&nbsp;ANATEL<br>
+========================================================================<br>
+Este&nbsp;script&nbsp;coleta,&nbsp;processa&nbsp;e&nbsp;consolida&nbsp;dados&nbsp;dos&nbsp;serviços&nbsp;de&nbsp;telecomunicações<br>
+(SCM,&nbsp;SMP,&nbsp;STFC)&nbsp;do&nbsp;portal&nbsp;de&nbsp;dados&nbsp;abertos&nbsp;da&nbsp;Anatel.<br>
+&nbsp;<br>
+Funcionalidades:<br>
+1.&nbsp;Busca&nbsp;dinâmica&nbsp;do&nbsp;ID&nbsp;do&nbsp;dataset&nbsp;na&nbsp;API<br>
+2.&nbsp;Download&nbsp;de&nbsp;arquivos&nbsp;ODS&nbsp;e&nbsp;CSV<br>
+3.&nbsp;Processamento&nbsp;e&nbsp;limpeza&nbsp;dos&nbsp;dados<br>
+4.&nbsp;Consolidação&nbsp;em&nbsp;um&nbsp;único&nbsp;arquivo&nbsp;CSV</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="os.html">os</a><br>
+</td><td class="multicolumn"><a href="pandas.html">pandas</a><br>
+</td><td class="multicolumn"><a href="re.html">re</a><br>
+</td><td class="multicolumn"><a href="requests.html">requests</a><br>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-baixar_arquivo"><strong>baixar_arquivo</strong></a>(url_info)</dt><dd><span class="code">Baixa&nbsp;o&nbsp;conteúdo&nbsp;de&nbsp;um&nbsp;arquivo&nbsp;a&nbsp;partir&nbsp;da&nbsp;URL.</span></dd></dl>
+ <dl><dt><a name="-buscar_dataset_id_dinamicamente"><strong>buscar_dataset_id_dinamicamente</strong></a>()</dt><dd><span class="code">Busca&nbsp;o&nbsp;ID&nbsp;do&nbsp;dataset&nbsp;'Índice&nbsp;de&nbsp;Desempenho&nbsp;no&nbsp;Atendimento'&nbsp;dinamicamente.<br>
+&nbsp;<br>
+Esta&nbsp;função&nbsp;consulta&nbsp;a&nbsp;API&nbsp;usando&nbsp;o&nbsp;endpoint&nbsp;de&nbsp;busca&nbsp;e&nbsp;retorna&nbsp;o&nbsp;ID&nbsp;do&nbsp;dataset.</span></dd></dl>
+ <dl><dt><a name="-criar_dataframe_consolidado"><strong>criar_dataframe_consolidado</strong></a>()</dt><dd><span class="code">Função&nbsp;principal&nbsp;que&nbsp;orquestra&nbsp;todo&nbsp;o&nbsp;processo&nbsp;de&nbsp;coleta&nbsp;e&nbsp;consolidação.<br>
+&nbsp;<br>
+Fluxo:<br>
+1.&nbsp;Busca&nbsp;ID&nbsp;do&nbsp;dataset&nbsp;dinamicamente<br>
+2.&nbsp;Obtém&nbsp;recursos&nbsp;da&nbsp;API<br>
+3.&nbsp;Filtra&nbsp;URLs&nbsp;relevantes<br>
+4.&nbsp;Processa&nbsp;cada&nbsp;arquivo&nbsp;individualmente<br>
+5.&nbsp;Consolida&nbsp;todos&nbsp;os&nbsp;DataFrames<br>
+6.&nbsp;Aplica&nbsp;limpezas&nbsp;finais</span></dd></dl>
+ <dl><dt><a name="-encontrar_linha_inicio_dados"><strong>encontrar_linha_inicio_dados</strong></a>(df)</dt><dd><span class="code">Encontra&nbsp;a&nbsp;linha&nbsp;onde&nbsp;começam&nbsp;os&nbsp;dados&nbsp;reais&nbsp;no&nbsp;DataFrame.<br>
+&nbsp;<br>
+Procura&nbsp;pela&nbsp;linha&nbsp;que&nbsp;contém&nbsp;'GRUPO&nbsp;ECONÔMICO'&nbsp;ou&nbsp;'GRUPO_ECON'<br>
+que&nbsp;geralmente&nbsp;é&nbsp;o&nbsp;cabeçalho&nbsp;dos&nbsp;dados.</span></dd></dl>
+ <dl><dt><a name="-extrair_ano_titulo"><strong>extrair_ano_titulo</strong></a>(titulo)</dt><dd><span class="code">Extrai&nbsp;o&nbsp;ano&nbsp;do&nbsp;título&nbsp;do&nbsp;arquivo&nbsp;usando&nbsp;expressão&nbsp;regular.</span></dd></dl>
+ <dl><dt><a name="-extrair_dados_reais"><strong>extrair_dados_reais</strong></a>(df, url_info)</dt><dd><span class="code">Remove&nbsp;cabeçalhos&nbsp;e&nbsp;metadados,&nbsp;extraindo&nbsp;apenas&nbsp;os&nbsp;dados&nbsp;reais.</span></dd></dl>
+ <dl><dt><a name="-extrair_urls_relevantes"><strong>extrair_urls_relevantes</strong></a>(dados)</dt><dd><span class="code">Filtra&nbsp;os&nbsp;recursos&nbsp;para&nbsp;extrair&nbsp;apenas&nbsp;URLs&nbsp;de&nbsp;arquivos&nbsp;ODS/CSV&nbsp;relevantes.<br>
+&nbsp;<br>
+Filtra&nbsp;por:<br>
+1.&nbsp;Serviços:&nbsp;SCM,&nbsp;SMP,&nbsp;STFC<br>
+2.&nbsp;Formatos:&nbsp;Apenas&nbsp;arquivos&nbsp;ODS&nbsp;ou&nbsp;CSV</span></dd></dl>
+ <dl><dt><a name="-fazer_requisicao_api"><strong>fazer_requisicao_api</strong></a>(dataset_id)</dt><dd><span class="code">Faz&nbsp;requisição&nbsp;à&nbsp;API&nbsp;para&nbsp;obter&nbsp;os&nbsp;arquivos&nbsp;de&nbsp;um&nbsp;dataset&nbsp;específico.</span></dd></dl>
+ <dl><dt><a name="-identificar_servico"><strong>identificar_servico</strong></a>(titulo)</dt><dd><span class="code">Identifica&nbsp;o&nbsp;tipo&nbsp;de&nbsp;serviço&nbsp;baseado&nbsp;no&nbsp;título&nbsp;do&nbsp;arquivo.</span></dd></dl>
+ <dl><dt><a name="-limpar_valores_decimais"><strong>limpar_valores_decimais</strong></a>(df)</dt><dd><span class="code">Remove&nbsp;zeros&nbsp;decimais&nbsp;desnecessários&nbsp;de&nbsp;valores&nbsp;numéricos.<br>
+&nbsp;<br>
+Exemplo:&nbsp;'15.00'&nbsp;-&gt;&nbsp;'15',&nbsp;'15.50'&nbsp;-&gt;&nbsp;'15.5'</span></dd></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>()</dt><dd><span class="code">Função&nbsp;principal&nbsp;que&nbsp;executa&nbsp;todo&nbsp;o&nbsp;fluxo&nbsp;do&nbsp;coletor.<br>
+&nbsp;<br>
+Fluxo:<br>
+1.&nbsp;Executa&nbsp;coleta&nbsp;e&nbsp;consolidação<br>
+2.&nbsp;Salva&nbsp;dados&nbsp;em&nbsp;arquivo&nbsp;CSV<br>
+3.&nbsp;Exibe&nbsp;estatísticas&nbsp;finais</span></dd></dl>
+ <dl><dt><a name="-normalizar_colunas_data"><strong>normalizar_colunas_data</strong></a>(df)</dt><dd><span class="code">Normaliza&nbsp;colunas&nbsp;de&nbsp;data&nbsp;para&nbsp;formato&nbsp;padrão&nbsp;'YYYY-MM'.<br>
+&nbsp;<br>
+Converte&nbsp;formatos&nbsp;como&nbsp;'2013-01-01&nbsp;00:00:00'&nbsp;para&nbsp;'2013-01'.</span></dd></dl>
+ <dl><dt><a name="-processar_arquivo_csv"><strong>processar_arquivo_csv</strong></a>(conteudo, url_info)</dt><dd><span class="code">Processa&nbsp;arquivo&nbsp;no&nbsp;formato&nbsp;CSV.</span></dd></dl>
+ <dl><dt><a name="-processar_arquivo_individual"><strong>processar_arquivo_individual</strong></a>(url_info)</dt><dd><span class="code">Processa&nbsp;um&nbsp;arquivo&nbsp;individual&nbsp;(rota&nbsp;para&nbsp;ODS&nbsp;ou&nbsp;CSV).</span></dd></dl>
+ <dl><dt><a name="-processar_arquivo_ods"><strong>processar_arquivo_ods</strong></a>(conteudo, url_info)</dt><dd><span class="code">Processa&nbsp;arquivo&nbsp;no&nbsp;formato&nbsp;ODS&nbsp;(OpenDocument&nbsp;Spreadsheet).</span></dd></dl>
+ <dl><dt><a name="-transformar_para_formato_longo"><strong>transformar_para_formato_longo</strong></a>(df, url_info)</dt><dd><span class="code">Transforma&nbsp;DataFrame&nbsp;de&nbsp;formato&nbsp;largo&nbsp;para&nbsp;formato&nbsp;longo.<br>
+&nbsp;<br>
+Formato&nbsp;largo:&nbsp;Colunas&nbsp;representam&nbsp;meses,&nbsp;linhas&nbsp;representam&nbsp;variáveis<br>
+Formato&nbsp;longo:&nbsp;Cada&nbsp;linha&nbsp;tem&nbsp;uma&nbsp;observação&nbsp;(variável&nbsp;+&nbsp;mês&nbsp;+&nbsp;valor)</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>API_KEY</strong> = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI...YwMH0.uYEo7JEuBAD714rUhmOj0ei_GK_Sbj9MnArN5LnrXXE'<br>
+<strong>BASE_URL</strong> = 'https://dados.gov.br/dados/api/publico'<br>
+<strong>HEADERS</strong> = {'accept': 'application/json', 'chave-api-dados-abertos': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI...YwMH0.uYEo7JEuBAD714rUhmOj0ei_GK_Sbj9MnArN5LnrXXE'}</td></tr></table>
+</body></html>
