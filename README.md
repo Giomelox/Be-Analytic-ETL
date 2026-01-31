@@ -22,6 +22,8 @@ Em seguida, cole as seguintes informações da imagem, e clique em executar.
 Você verá logo abaixo a resposta do endpoint com um json contendo os dados do dataset, esse é o json utilizado no código para extrair as tabelas.
 
 
+# Atenção! Antes de seguir para o processo de docker, garanta que a porta 5432 esteja disponível para ser usada.
+
 # Rodando o container
 
 Caso você não tenha copiado este projeto para o seu computador, será necessário fazer agora. Salve este projeto em alguma pasta.
