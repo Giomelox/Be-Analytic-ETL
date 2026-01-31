@@ -75,6 +75,7 @@ docker compose up --build
 Serão solicitados um login de usuário e uma senha, porém já configuramos isso no nosso arquivo .yml, então basta entrar:
 
 Usuário: admin@admin.com
+
 Senha: admin
 
 Entrando com sucesso, vamos ter a tela do pgadmin, então basta criarmos um servidor:
@@ -90,9 +91,13 @@ Name: BeAnalytic_DB
 Clique na aba 'Connection' e preencha as seguintes informações:
 
 Host: db 
+
 Port: 5432 
+
 Username: postgres 
+
 Password: 12345
+
 -> Habilite o 'Save password'
 
 <img width="700" height="544" alt="image" src="https://github.com/user-attachments/assets/5b0fcad9-1b34-4d18-8fb3-c63bd475c499" />
