@@ -1,7 +1,6 @@
 # Be-Analytic-ETL
 
-## Antes de começarmos, vale ressaltar que o arquivo de token.env está no seu formato original à fins de praticidade e correto funcionamento (mesmo não sendo aconselhável para produção).
-## Sendo assim, é aconselhável não alterar este arquivo caso você não tenha um token de acesso para a API, ou não quiser configurar informações da conexão postgre.
+## Antes de começarmos, vale ressaltar que o arquivo de token.env está no seu formato original à fins de praticidade e correto funcionamento (mesmo não sendo aconselhável para produção). Sendo assim, é aconselhável não alterar este arquivo caso você não tenha um token de acesso para a API, ou não quiser configurar informações da conexão postgre.
 
 # Configurando token e testando endpoint (Pule esta etapa caso queira utilizar o código original)
 
